@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="store">
   <head>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
   </head>
-  <body>
+  <body ng-controller="StoreController as store">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js" ></script>
     <script type="text/javascript" src="app.js"></script>
 
-    <div class="">
-      <h1> Product Name </h1>
-      <h2> $Product Price </h2>
-      <p> Product Description </p>
+    <div ng-repeat="product in store.products | orderBy:'price'">
+      <h1> {{product.name}} </h1>
+      <h2> {{product.price | currency}} </h2>
+      <p> {{product.description}} </p>
+      <button ng-show="product.canPurchase"> Add to Cart </button>
     </div>
+    <p>{{'10171991520' | date:'MM/dd/yyyy @ h:mma'}}</p>
+    <p>{{'octagon gem' | uppercase}}</p>
+    <p>{{'My Description' | limitTo:8}}</p>
+
     <p>I am {{4 + 6}}</p>
     <!-- <h1></h1> -->
-    <!-- <input type="text" ng-> -->
+    <!-- <input type="text" > -->
   </body>
 </html>
