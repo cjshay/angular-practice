@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html ng-app="store">
   <head>
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <meta charset=”utf-8”>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
   </head>
   <body ng-controller="StoreController as store">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js" ></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src=”js/bootstrap.js”></script>
+
     <script type="text/javascript" src="app.js"></script>
+
 
     <div ng-repeat="product in store.products | orderBy:'price'">
       <h1> {{product.name}} </h1>
       <h2> {{product.price | currency}} </h2>
-      <p> {{product.description}} </p>
+      <li ng-repeat="image in product.images">
+        <img ng-src="{{image.full}}" alt=""/>
+      </li>
       <button ng-show="product.canPurchase"> Add to Cart </button>
+      
+      <section ng-controller="PanelController as panel">
+        <ul>
+          <li ng-class="{ active: panel.isSelected(1) }">
+            <a ng-click="panel.selectTab(1)">Description</a>
+          </li>
+          <li ng-class="{ active: panel.isSelected(2) }">
+            <a ng-click="panel.selectTab(2)">Specifications</a>
+          </li>
+          <li ng-class="{ active: panel.isSelected(3) }">
+            <a ng-click="panel.selectTab(3)">Reviews</a>
+          </li>
+        </ul>
+
+        <div ng-show="tab === 1">
+          <h4>Description</h4>
+          <p> {{product.description}} </p>
+        </div>
+        <div ng-show="tab === 2">
+          <h4>Specifications</h4>
+          <blockquote>None yet</blockquote>
+        </div>
+        <div ng-show="tab === 3">
+          <h4>Reviews</h4>
+          <blockquote>None yet</blockquote>
+        </div>
+      </section>
     </div>
     <p>{{'10171991520' | date:'MM/dd/yyyy @ h:mma'}}</p>
     <p>{{'octagon gem' | uppercase}}</p>
