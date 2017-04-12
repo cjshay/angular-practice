@@ -17,9 +17,22 @@
     };
   });
 
+  app.controller('ReviewController', function() {
+    this.review = {};
+
+    this.addReview = function(product) {
+      product.reviews.push(this.review);
+      this.review = {};
+    };
+  });
+
+
+
+
+
   var gems = [
     {
-      name: 'Dodecahedron',
+      name: 'Awesome Multi-touch keyboard',
       price: 2,
       description: '. . .',
       images: [
@@ -36,6 +49,18 @@
           thumb: 'dodecahedron-03-thumb.jpg'
         }
       ],
+      reviews: [
+        {
+          stars: 5,
+          body: "I love this!",
+          author: "joe@joe"
+        },
+        {
+          stars: 1,
+          body: "this product sucks",
+          author: "tim@hater"
+        }
+      ],
       canPurchase: true,
       soldOut: true
     },
@@ -43,6 +68,18 @@
       name: "Brom",
       price: 9.1,
       description: ". . .",
+      reviews: [
+        {
+          stars: 5,
+          body: "I love this!",
+          author: "joe@joe"
+        },
+        {
+          stars: 1,
+          body: "this product sucks",
+          author: "tim@hater"
+        }
+      ],
       images: [
         {
           full: 'dodecahedron-01-full.jpg',
@@ -63,6 +100,18 @@
       name: "Trom",
       price: 590,
       description: ". . .",
+      reviews: [
+        {
+          stars: 5,
+          body: "I love this!",
+          author: "joe@joe"
+        },
+        {
+          stars: 1,
+          body: "this product sucks",
+          author: "tim@hater"
+        }
+      ],
       images: [
         {
           full: 'dodecahedron-01-full.jpg',
@@ -83,6 +132,18 @@
       name: "Grom",
       price: 25,
       description: ". . .",
+      reviews: [
+        {
+          stars: 5,
+          body: "I love this!",
+          author: "joe@joe"
+        },
+        {
+          stars: 1,
+          body: "this product sucks",
+          author: "tim@hater"
+        }
+      ],
       images: [
         {
           full: 'dodecahedron-01-full.jpg',
@@ -99,5 +160,5 @@
       ],
       canPurchase: false
     }
-  ]
+  ];
 })();

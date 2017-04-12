@@ -5,7 +5,8 @@
   "main": "controller.js",
   "dependencies": {
     "angular": "^1.6.3",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "eslint": "^3.19.0"
   },
   "devDependencies": {},
   "scripts": {
