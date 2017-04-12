@@ -2,7 +2,7 @@
   "name": "angular-practice",
   "version": "1.0.0",
   "description": "",
-  "main": "controller.js",
+  "main": "app.js",
   "dependencies": {
     "angular": "^1.6.3",
     "bootstrap": "^3.3.7",
