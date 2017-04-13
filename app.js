@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('gemStore', []);
+  var app = angular.module('gemStore', ['store-products']);
 
   app.controller('GalleryController', function(){
     this.current = 0;
@@ -8,21 +8,15 @@
     };
   });
 
-  app.controller('StoreController', function() {
-    this.products = gems;
-  });
+  app.controller('StoreController', ['$http', '$log', function($http, $log) {
+    var store = this;
+    store.products = [];
 
-  app.controller("TabController", function() {
-    this.tab = 1;
-
-    this.isSet = function(checkTab) {
-      return this.tab === checkTab;
-    };
-
-    this.setTab = function(setTab) {
-      this.tab = setTab;
-    };
-  });
+    $http.get('https://api.myjson.com/bins/1dz1zv').then(function(data) {
+      $log.log(data.data);
+      store.products = data.data;
+    });
+  }]);
 
   app.controller("ReviewController", function(){
 
@@ -34,29 +28,6 @@
     };
 
   });
-
-  app.directive("productDescription", function() {
-    return {
-      restrict: 'E',
-      templateUrl: "product-description.html"
-    };
-  });
-
-  app.directive("productReviews", function() {
-    return {
-      restrict: 'E',
-      templateUrl: "product-reviews.html"
-    };
-  });
-
-  app.directive("productSpecs", function() {
-    return {
-      restrict: 'E',
-      templateUrl: "product-specs.html"
-    };
-  });
-
-
 
   var gems = [
     {
