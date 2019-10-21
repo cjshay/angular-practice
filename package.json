@@ -6,7 +6,7 @@
   "dependencies": {
     "angular": "^1.6.3",
     "bootstrap": "^3.3.7",
-    "eslint": "^3.19.0"
+    "eslint": "^6.5.1"
   },
   "devDependencies": {},
   "scripts": {
